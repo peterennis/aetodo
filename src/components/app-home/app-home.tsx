@@ -33,7 +33,16 @@ export class AppHome {
       </ion-header>,
 
       <ion-content class="ion-padding">
-
+        <ion-list lines="none">
+          {this.todos.map(todo => (
+            <div class="aetodo-container">
+              <ion-checkbox />
+              <ion-item button href="">
+                <ion-label>test</ion-label>
+              </ion-item>
+            </div>
+          ))}
+        </ion-list>
       </ion-content>
     ];
   }
