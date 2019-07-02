@@ -2,10 +2,10 @@ import { Component, Prop, State, h } from '@stencil/core';
 import { sayHello } from '../../helpers/utils';
 
 @Component({
-  tag: 'app-profile',
-  styleUrl: 'app-profile.css'
+  tag: 'app-detail',
+  styleUrl: 'app-detail.css'
 })
-export class AppProfile {
+export class AppDetail {
   @State() state = false;
   @Prop() name: string;
 
@@ -23,7 +23,7 @@ export class AppProfile {
           <ion-buttons slot="start">
             <ion-back-button defaultHref="/" />
           </ion-buttons>
-          <ion-title>Profile: {this.name}</ion-title>
+          <ion-title>Detail: {this.name}</ion-title>
         </ion-toolbar>
       </ion-header>,
 
