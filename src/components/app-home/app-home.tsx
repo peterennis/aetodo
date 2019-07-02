@@ -9,7 +9,7 @@ export class AppHome {
 
   @State() todos: Todo[] = [];
 
-  componentWilLoad() {
+  componentWillLoad() {
     this.todos = [
       { id: "1", title: "first todo", description: "the first thing todo" },
       { id: "2", title: "second todo", description: "the second thing todo" },
