@@ -38,7 +38,7 @@ export class AppHome {
           <div class="todo-container">
             <ion-checkbox></ion-checkbox>
             <ion-item button href="">
-              <iln-label>test</iln-label>
+              <ion-label>test</ion-label>
             </ion-item>
           </div>
         </ion-list>
