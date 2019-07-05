@@ -11,7 +11,7 @@ export class AppRoot {
       <ion-app>
         <ion-router useHash={false}>
           <ion-route url="/" component="app-home" />
-          <ion-route url="/detail/:name" component="app-detail" />
+          <ion-route url=":id" component="app-detail" />
         </ion-router>
         <ion-nav />
         <ion-alert-controller />
