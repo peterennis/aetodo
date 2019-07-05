@@ -34,7 +34,14 @@ export class AppHome {
       </ion-header>,
 
       <ion-content class="ion-padding">
-
+        <ion-list lines="none">
+          <div class="todo-container">
+            <ion-checkbox></ion-checkbox>
+            <ion-item button href="">
+              <iln-label>test</iln-label>
+            </ion-item>
+          </div>
+        </ion-list>
       </ion-content>
     ];
   }
