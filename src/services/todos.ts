@@ -38,6 +38,9 @@ class TodoController {
   }
 
   async addTodo(title, description): Promise<void> {
+    // Testing
+    this.todos = [];
+
     let id = Math.max(...this.todos.map(todo => parseInt(todo.id)), 0);
 
     let todo = {
