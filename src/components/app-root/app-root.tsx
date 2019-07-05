@@ -14,6 +14,7 @@ export class AppRoot {
           <ion-route url="/detail/:name" component="app-detail" />
         </ion-router>
         <ion-nav />
+        <ion-alert-controller />
       </ion-app>
     );
   }
