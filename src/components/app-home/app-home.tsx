@@ -35,12 +35,16 @@ export class AppHome {
 
       <ion-content class="ion-padding">
         <ion-list lines="none">
-          <div class="todo-container">
-            <ion-checkbox></ion-checkbox>
-            <ion-item button href="">
-              <ion-label>test</ion-label>
-            </ion-item>
-          </div>
+          {
+            this.todos.map(todo => [
+              <div class="todo-container" key={todo.id}>
+                <ion-checkbox></ion-checkbox>
+                <ion-item button href={`/${todo.id}`}>
+                  <ion-label>{todo.title}</ion-label>
+                </ion-item>
+              </div>
+            ])
+          }
         </ion-list>
       </ion-content>
     ];
