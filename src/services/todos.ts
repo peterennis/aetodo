@@ -30,12 +30,23 @@ class TodoController {
     });
   }
 
-  deleteTodo(todoToDelete): Promise<void> {
-
+  async deleteTodo(todoToDelete): Promise<void> {
+    let index = this.todos.findIndex(todo => {
+      return todoToDelete.id == todo.id;
+    });
+    this.todos.splice(index, 1);
   }
 
-  addTodo(title, description): Promise<void> {
+  async addTodo(title, description): Promise<void> {
+    let id = Math.max(...this.todos.map(todo => parseInt(todo.id)), 0);
 
+    let todo = {
+      id: (id + 1).toString(),
+      title: title,
+      description: description
+    }
+
+    this.todos.push(todo);
   }
 }
 
