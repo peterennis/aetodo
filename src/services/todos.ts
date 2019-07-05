@@ -1,4 +1,4 @@
-import { Todo } from "../services/todo";
+import { Todo } from "../interfaces/todo";
 
 class TodoController {
 
