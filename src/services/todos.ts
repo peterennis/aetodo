@@ -23,8 +23,11 @@ class TodoController {
     return await this.load();
   }
 
-  getTodo(id): Promise<Todo> {
-
+  async getTodo(id): Promise<Todo> {
+    let todos = await this.load();
+    return todos.find(todo => {
+      return todo.id === id;
+    });
   }
 
   deleteTodo(todoToDelete): Promise<void> {
