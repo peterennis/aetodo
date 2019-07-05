@@ -1,20 +1,27 @@
 import { Component, Prop, State, h } from '@stencil/core';
-import { sayHello } from '../../helpers/utils';
+import { Todos } from "../../services/todos";
+import { Todo } from "../../interfaces/todo";
+//import { sayHello } from '../../helpers/utils';
 
 @Component({
   tag: 'app-detail',
   styleUrl: 'app-detail.css'
 })
 export class AppDetail {
-  @State() state = false;
-  @Prop() name: string;
 
-  formattedName(): string {
-    if (this.name) {
-      return this.name.substr(0, 1).toUpperCase() + this.name.substr(1).toLowerCase();
-    }
-    return '';
+  @Prop() id: string;
+
+  @State() todo: Todo = {
+    id: null,
+    title: "",
+    description: ""
+  };
+
+  async componentWillLoad() {
+    this.todo = await Todos.getTodo(this.id);
   }
+
+
 
   render() {
     return [
@@ -23,23 +30,13 @@ export class AppDetail {
           <ion-buttons slot="start">
             <ion-back-button defaultHref="/" />
           </ion-buttons>
-          <ion-title>Detail: {this.name}</ion-title>
+          <ion-title>Detail</ion-title>
         </ion-toolbar>
       </ion-header>,
 
       <ion-content class="ion-padding">
-        <p>
-          {sayHello()}! My name is {this.formattedName()}. My name was passed in through a
-          route param!
-        </p>
-
-        <ion-item>
-          <ion-label>Setting ({this.state.toString()})</ion-label>
-          <ion-toggle
-            checked={this.state}
-            onIonChange={ev => (this.state = ev.detail.checked)}
-          />
-        </ion-item>
+        <h2>{this.todo.title}</h2>
+        <p>{this.todo.description}</p>
       </ion-content>
     ];
   }

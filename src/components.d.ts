@@ -10,7 +10,7 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 export namespace Components {
   interface AppDetail {
-    'name': string;
+    'id': string;
   }
   interface AppHome {}
   interface AppRoot {}
@@ -45,7 +45,7 @@ declare global {
 
 declare namespace LocalJSX {
   interface AppDetail extends JSXBase.HTMLAttributes<HTMLAppDetailElement> {
-    'name'?: string;
+    'id'?: string;
   }
   interface AppHome extends JSXBase.HTMLAttributes<HTMLAppHomeElement> {}
   interface AppRoot extends JSXBase.HTMLAttributes<HTMLAppRootElement> {}
