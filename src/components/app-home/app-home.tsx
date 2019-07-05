@@ -62,7 +62,13 @@ export class AppHome {
 
   async createTodo(data) {
     await Todos.addTodo(data.title, data.description);
-    this.todos = [...(await Todos.getTodos())]
+    this.todos = [...(await Todos.getTodos())];
+  }
+
+  async removeTodo(todo) {
+    await Todos.deleteTodo(todo);
+    await new Promise(resolve => setTimeout(resolve, 300));
+    this.todos = [...(await Todos.getTodos())];
   }
 
   render() {
@@ -83,7 +89,7 @@ export class AppHome {
           {
             this.todos.map(todo => [
               <div class="todo-container" key={todo.id}>
-                <ion-checkbox></ion-checkbox>
+                <ion-checkbox onClick={() => this.removeTodo(todo)} />
                 <ion-item button href={`/${todo.id}`}>
                   <ion-label>{todo.title}</ion-label>
                 </ion-item>
