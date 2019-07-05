@@ -19,8 +19,8 @@ class TodoController {
 
   }
 
-  getTodos(): Promise<Todo[]> {
-
+  async getTodos(): Promise<Todo[]> {
+    return await this.load();
   }
 
   getTodo(id): Promise<Todo> {
