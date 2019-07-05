@@ -1,5 +1,6 @@
 import { Component, State, h } from '@stencil/core';
 import { Todo } from "../../interfaces/todo";
+import { Todos } from "../../services/todos";
 
 @Component({
   tag: 'app-home',
@@ -20,13 +21,57 @@ export class AppHome {
     console.log(this.todos);
   }
 
+  async presentAlert() {
+    const alertCtrl = document.querySelector("ion-alert-controller");
+
+    const alert = await alertCtrl.create({
+      header: "New Todo",
+      message: "Add the details of your todo below",
+      inputs: [
+        {
+          name: "title",
+          type: "text",
+          placeholder: "title..."
+        },
+        {
+          name: "description",
+          type: "text",
+          placeholder: "description..."
+        }
+      ],
+      buttons: [
+        {
+          text: "Cancel",
+          role: "cancel",
+          cssClass: "secondary",
+          handler: () => {
+            console.log("cancelled");
+          }
+        },
+        {
+          text: "Add",
+          handler: data => {
+            this.createTodo(data);
+          }
+        }
+      ]
+    });
+
+    return await alert.present();
+  }
+
+  async createTodo(data) {
+    await Todos.addTodo(data.title, data.description);
+    this.todos = [...(await Todos.getTodos())]
+  }
+
   render() {
     return [
       <ion-header>
         <ion-toolbar color="primary">
           <ion-title>Todos</ion-title>
           <ion-buttons slot="end">
-            <ion-button>
+            <ion-button onClick={() => this.presentAlert()}>
               <ion-icon slot="icon-only" name="add"></ion-icon>
             </ion-button>
           </ion-buttons>
