@@ -15,7 +15,7 @@ class TodoController {
     }
   }
 
-  save(): Promise<void> {
+  async save(): Promise<void> {
 
   }
 
