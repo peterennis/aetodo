@@ -6,8 +6,13 @@ class TodoController {
 
   constructor() { }
 
-  load(): Promise<Todo[]> {
-
+  async load(): Promise<Todo[]> {
+    if (this.todos) {
+      return this.todos
+    } else {
+      this.todos = [{ id: '1', title: 'test', description: 'test' }]
+      return this.todos
+    }
   }
 
   save(): Promise<void> {
